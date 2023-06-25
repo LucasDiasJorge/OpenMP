@@ -12,25 +12,22 @@ int main(int argc, char *argv[]) {
 
     omp_set_num_threads(threadNumbers);
 
-    std::cout << "------ Without critical part ------" << std::endl;
+    const int N = 10;
+    int array[N] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    int sum = 0;
 
-    #pragma omp parallel
-    {
-        int threadID = omp_get_thread_num();
-        std::cout << "Hello from thread " << threadID << std::endl;
+    std::cout << "---------- Threads action ----------" << std::endl;
+
+    #pragma omp parallel for
+    for (int i = 0; i < N; i++) {
+        std::cout << "Thread " << omp_get_thread_num() << std::endl;
+        sum += array[i];
     }
 
-    std::cout << "------ With critical part ------" << std::endl;
+    std::cout << "---------- Threads action ----------" << std::endl;
 
-    
-    #pragma omp parallel // each core will create a threadId
-    {
-        int threadID = omp_get_thread_num();
-        #pragma omp critical // avoid problems in the critical region, only core 0 works where
-        {
-            std::cout << "Hello from thread " << threadID << std::endl;
-        }
-    }
+
+    std::cout << "Sum: " << sum << std::endl;
 
     return 0;
 }
