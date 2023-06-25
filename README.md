@@ -10,3 +10,7 @@
     ```c
     omp_set_num_threads(int);
     ```
+
+3. Learning how omp for works
+
+    For paralellism between multiple threads
