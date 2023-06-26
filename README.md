@@ -13,4 +13,10 @@
 
 3. Learning how omp for works
 
-    For paralellism between multiple threads
+    For paralellism between multiple threads.
+
+4. The omp barrier 
+
+    Identifies a synchronization point at which threads in a parallel region will wait until all other threads in that section reach the same point. Statement execution past the omp barrier point then continues in parallel.
+
+    [Ref](https://www.ibm.com/docs/en/xl-c-aix/11.1.0?topic=processing-pragma-omp-barrier#:~:text=The%20omp%20barrier%20directive%20identifies,point%20then%20continues%20in%20parallel.)
